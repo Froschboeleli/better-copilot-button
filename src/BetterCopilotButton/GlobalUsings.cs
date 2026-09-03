@@ -1,0 +1,11 @@
+global using System;
+global using System.Collections.Generic;
+global using System.IO;
+global using System.Linq;
+global using System.Threading;
+global using System.Threading.Tasks;
+global using System.Windows;
+global using Application = System.Windows.Application;
+global using MessageBox = System.Windows.MessageBox;
+global using Brush = System.Windows.Media.Brush;
+global using Brushes = System.Windows.Media.Brushes;

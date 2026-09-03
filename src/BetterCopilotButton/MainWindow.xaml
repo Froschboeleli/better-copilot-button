@@ -1,0 +1,157 @@
+<Window x:Class="BetterCopilotButton.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Better Copilot Button"
+        Width="520"
+        Height="760"
+        MinWidth="460"
+        MinHeight="600"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanResize"
+        Icon="Assets/app.ico"
+        Closing="OnClosing">
+    <DockPanel>
+        <Border DockPanel.Dock="Top" Background="#172033" Padding="22,18">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Width="40" Height="40" CornerRadius="10" Background="#1D4E89" Margin="0,0,14,0">
+                    <TextBlock Text="Key" Foreground="White" FontWeight="SemiBold" FontSize="12"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <StackPanel Grid.Column="1">
+                    <TextBlock Text="Better Copilot Button" FontSize="20" FontWeight="SemiBold" Foreground="White"/>
+                    <TextBlock Text="Replace the Copilot key with any app you choose."
+                               Foreground="#C5D0DE" Margin="0,4,0,0" TextWrapping="Wrap"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border DockPanel.Dock="Bottom" Padding="20,12" BorderBrush="{StaticResource LineBrush}" BorderThickness="0,1,0,0">
+            <DockPanel>
+                <Button DockPanel.Dock="Right" Content="Uninstall"
+                        Style="{StaticResource GhostButton}"
+                        Click="OnUninstallClick"/>
+                <TextBlock x:Name="FooterText"
+                           VerticalAlignment="Center"
+                           Foreground="{StaticResource MutedBrush}"
+                           FontSize="12"
+                           Text="v1.0.0  ·  No admin required"/>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer VerticalScrollBarVisibility="Auto" Padding="20,16,20,8">
+            <StackPanel>
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <DockPanel LastChildFill="False">
+                            <StackPanel DockPanel.Dock="Left">
+                                <TextBlock Text="Remap" FontWeight="SemiBold" FontSize="16"/>
+                                <TextBlock x:Name="RemapStatusText"
+                                           Text="Off. The Copilot key is unchanged."
+                                           Foreground="{StaticResource MutedBrush}"
+                                           TextWrapping="Wrap"
+                                           Margin="0,4,0,0"/>
+                            </StackPanel>
+                            <CheckBox x:Name="RemapToggle"
+                                      DockPanel.Dock="Right"
+                                      VerticalAlignment="Center"
+                                      Content="Enable"
+                                      FontWeight="SemiBold"
+                                      Checked="OnRemapToggled"
+                                      Unchecked="OnRemapToggled"/>
+                        </DockPanel>
+                        <TextBlock Margin="0,10,0,0"
+                                   Foreground="{StaticResource MutedBrush}"
+                                   FontSize="12"
+                                   TextWrapping="Wrap"
+                                   Text="Keep this app running, or turn on start at login, or the remap pauses when you quit."/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Text="Target app" FontWeight="SemiBold" FontSize="16"/>
+                        <TextBlock Text="Calculator is the default. Pick any preset or browse for a .exe."
+                                   Foreground="{StaticResource MutedBrush}"
+                                   TextWrapping="Wrap"
+                                   Margin="0,4,0,10"/>
+
+                        <UniformGrid x:Name="PresetGrid" Columns="2"/>
+
+                        <Grid Margin="0,12,0,0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBox x:Name="CustomPathBox"
+                                     Padding="10,8"
+                                     BorderBrush="{StaticResource LineBrush}"
+                                     BorderThickness="1"
+                                     VerticalContentAlignment="Center"
+                                     LostFocus="OnCustomPathLostFocus"/>
+                            <Button Grid.Column="1"
+                                    Content="Browse"
+                                    Margin="8,0,0,0"
+                                    Style="{StaticResource SecondaryButton}"
+                                    Click="OnBrowseClick"/>
+                        </Grid>
+                        <TextBox x:Name="CustomArgsBox"
+                                 Margin="0,8,0,0"
+                                 Padding="10,8"
+                                 BorderBrush="{StaticResource LineBrush}"
+                                 ToolTip="Optional arguments for a custom .exe"
+                                 LostFocus="OnCustomArgsLostFocus"/>
+                        <TextBlock Text="Optional arguments (custom app only)"
+                                   Foreground="{StaticResource MutedBrush}"
+                                   FontSize="11"
+                                   Margin="2,4,0,0"/>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,12,0,0">
+                            <Button Content="Test launch"
+                                    Style="{StaticResource PrimaryButton}"
+                                    Click="OnTestLaunchClick"/>
+                            <TextBlock x:Name="TargetHint"
+                                       Margin="12,0,0,0"
+                                       VerticalAlignment="Center"
+                                       Foreground="{StaticResource MutedBrush}"
+                                       TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Text="Options" FontWeight="SemiBold" FontSize="16"/>
+                        <CheckBox x:Name="LoginCheck"
+                                  Margin="0,10,0,0"
+                                  Content="Start at login"
+                                  Checked="OnLoginToggled"
+                                  Unchecked="OnLoginToggled"/>
+                        <TextBlock Text="Starts in the tray so the remap is ready after you sign in."
+                                   Foreground="{StaticResource MutedBrush}"
+                                   FontSize="12"
+                                   Margin="22,4,0,10"
+                                   TextWrapping="Wrap"/>
+                        <Button HorizontalAlignment="Left"
+                                Content="Add to Start menu"
+                                Style="{StaticResource SecondaryButton}"
+                                Click="OnInstallClick"/>
+                    </StackPanel>
+                </Border>
+
+                <Border Style="{StaticResource CardBorder}">
+                    <StackPanel>
+                        <TextBlock Text="How it works" FontWeight="SemiBold" FontSize="16"/>
+                        <TextBlock Margin="0,8,0,0" TextWrapping="Wrap" Foreground="{StaticResource MutedBrush}"
+                                   Text="On most PCs the Copilot key sends Windows + Shift + F23. This app listens for that chord and opens your target app instead. It does not rewrite firmware and does not need admin."/>
+                        <TextBlock Margin="0,8,0,0" TextWrapping="Wrap" Foreground="{StaticResource MutedBrush}"
+                                   Text="Some laptops handle the key in firmware or only allow Microsoft's limited Settings remap (Copilot, Search, or a Store app). If nothing happens, your keyboard may not send the standard shortcut."/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+    </DockPanel>
+</Window>
