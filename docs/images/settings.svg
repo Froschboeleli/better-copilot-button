@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 760" role="img" aria-label="Better Copilot Button settings window">
+  <defs>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="18" flood-color="#172033" flood-opacity="0.16"/>
+    </filter>
+  </defs>
+  <rect width="1040" height="760" fill="#E8ECF2"/>
+  <rect x="90" y="36" width="860" height="688" rx="18" fill="#F5F6F8" filter="url(#shadow)" stroke="#D5DBE4"/>
+  <rect x="90" y="36" width="860" height="88" rx="18" fill="#172033"/>
+  <rect x="90" y="106" width="860" height="18" fill="#172033"/>
+  <rect x="118" y="58" width="44" height="44" rx="10" fill="#1D4E89"/>
+  <text x="129" y="85" fill="#fff" font-family="Segoe UI, sans-serif" font-size="12" font-weight="600">Key</text>
+  <text x="176" y="76" fill="#fff" font-family="Segoe UI, sans-serif" font-size="22" font-weight="600">Better Copilot Button</text>
+  <text x="176" y="98" fill="#C5D0DE" font-family="Segoe UI, sans-serif" font-size="14">Replace the Copilot key with any app you choose.</text>
+
+  <rect x="118" y="148" width="804" height="92" rx="12" fill="#fff" stroke="#E3E7EE"/>
+  <text x="138" y="178" fill="#172033" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600">Remap</text>
+  <text x="138" y="202" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="13">On. The Copilot key opens Calculator.</text>
+  <rect x="800" y="176" width="96" height="32" rx="16" fill="#1D4E89"/>
+  <circle cx="872" cy="192" r="12" fill="#fff"/>
+  <text x="818" y="197" fill="#fff" font-family="Segoe UI, sans-serif" font-size="12">Enable</text>
+
+  <rect x="118" y="256" width="804" height="300" rx="12" fill="#fff" stroke="#E3E7EE"/>
+  <text x="138" y="288" fill="#172033" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600">Target app</text>
+  <text x="138" y="310" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="13">Calculator is the default. Pick any preset or browse for a .exe.</text>
+
+  <rect x="138" y="328" width="186" height="58" rx="8" fill="#E8F1FA" stroke="#1D4E89"/>
+  <text x="152" y="352" fill="#172033" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Calculator  ·  default</text>
+  <text x="152" y="370" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="11">Windows Calculator</text>
+
+  <rect x="336" y="328" width="186" height="58" rx="8" fill="#fff" stroke="#E3E7EE"/>
+  <text x="350" y="352" fill="#172033" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Notepad</text>
+  <text x="350" y="370" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="11">Classic Notepad</text>
+
+  <rect x="534" y="328" width="186" height="58" rx="8" fill="#fff" stroke="#E3E7EE"/>
+  <text x="548" y="352" fill="#172033" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Windows Terminal</text>
+  <text x="548" y="370" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="11">wt.exe if installed</text>
+
+  <rect x="732" y="328" width="164" height="58" rx="8" fill="#fff" stroke="#E3E7EE"/>
+  <text x="746" y="352" fill="#172033" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">File Explorer</text>
+  <text x="746" y="370" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="11">New window</text>
+
+  <rect x="138" y="398" width="186" height="52" rx="8" fill="#fff" stroke="#E3E7EE"/>
+  <text x="152" y="422" fill="#172033" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Settings</text>
+  <text x="152" y="440" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="11">Windows Settings</text>
+
+  <rect x="336" y="398" width="186" height="52" rx="8" fill="#fff" stroke="#E3E7EE"/>
+  <text x="350" y="422" fill="#172033" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Custom app</text>
+  <text x="350" y="440" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="11">Browse for any .exe</text>
+
+  <rect x="138" y="466" width="560" height="36" rx="8" fill="#F5F6F8" stroke="#E3E7EE"/>
+  <text x="152" y="490" fill="#5C6778" font-family="Segoe UI, sans-serif" font-size="13">calc.exe</text>
+  <rect x="710" y="466" width="88" height="36" rx="8" fill="#E8F1FA"/>
+  <text x="728" y="490" fill="#1D4E89" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Browse</text>
+  <rect x="138" y="514" width="130" height="28" rx="8" fill="#1D4E89"/>
+  <text x="156" y="533" fill="#fff" font-family="Segoe UI, sans-serif" font-size="13" font-weight="600">Test launch</text>
+
+  <rect x="118" y="572" width="804" height="88" rx="12" fill="#fff" stroke="#E3E7EE"/>
+  <text x="138" y="604" fill="#172033" font-family="Segoe UI, sans-serif" font-size="16" font-weight="600">Options</text>
+  <rect x="138" y="622" width="16" height="16" rx="3" fill="#fff" stroke="#1D4E89"/>
+  <text x="164" y="635" fill="#172033" font-family="Segoe UI, sans-serif" font-size="13">Start at login</text>
+</svg>

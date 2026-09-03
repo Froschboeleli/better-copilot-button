@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Better Copilot Button</title>
+  <meta name="description" content="Replace the Windows Copilot hardware key with any app you choose. Default: Calculator.">
+  <link rel="icon" href="images/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="#top">
+          <img src="images/logo.svg" alt="">
+          Better Copilot Button
+        </a>
+        <div class="nav-links">
+          <a href="#why">Why</a>
+          <a href="#install">Install</a>
+          <a href="#how">How it works</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://github.com/Froschboeleli/better-copilot-button">GitHub</a>
+        </div>
+      </nav>
+
+      <section class="hero" id="top">
+        <div>
+          <h1>Your Copilot key. Any app you want.</h1>
+          <p class="lead">A small Windows tray app that remaps the Copilot hardware key to Calculator, Notepad, Terminal, Explorer, Settings, or any .exe you pick.</p>
+          <div class="actions">
+            <a class="btn btn-primary" href="https://github.com/Froschboeleli/better-copilot-button/releases/latest">Download for Windows</a>
+            <a class="btn btn-ghost" href="https://github.com/Froschboeleli/better-copilot-button">View source</a>
+          </div>
+          <p class="fine">Windows 10/11 x64. Unzip and run. No admin, no account, no telemetry. Default target is Calculator.</p>
+        </div>
+        <div class="hero-art">
+          <img src="images/settings.svg" alt="Illustration of the Better Copilot Button settings window with Calculator selected">
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <main>
+    <section id="why">
+      <div class="wrap">
+        <h2>Why this exists</h2>
+        <p class="sub">Newer PCs replaced a useful key with Copilot. You should be able to spend that key on the app you actually open all day.</p>
+        <div class="grid-3">
+          <article class="card">
+            <h3>Any app, not an AI picker</h3>
+            <p>This is a general remapper. Calculator is the default. Browse to any executable. ChatGPT is only an optional preset if you already have it installed.</p>
+          </article>
+          <article class="card">
+            <h3>No admin required</h3>
+            <p>The remap uses a user-level keyboard hook and the official Win+Shift+F23 shortcut. Nothing is written to a scancode map. Uninstall is just quit plus cleanup.</p>
+          </article>
+          <article class="card">
+            <h3>Stays out of the way</h3>
+            <p>Lives in the tray. Open settings, enable or disable the remap, or quit. Optional start at login. Settings live in AppData only.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="install">
+      <div class="wrap grid-2">
+        <div>
+          <h2>Install in a minute</h2>
+          <ol class="steps">
+            <li>Download the zip from the latest GitHub Release.</li>
+            <li>Unzip and double-click <strong>BetterCopilotButton.exe</strong>.</li>
+            <li>Leave Calculator selected, or pick another app.</li>
+            <li>Turn Enable on. Press the Copilot key.</li>
+          </ol>
+          <div class="actions">
+            <a class="btn btn-solid" href="https://github.com/Froschboeleli/better-copilot-button/releases/latest">Get the zip</a>
+            <a class="btn btn-outline" href="https://github.com/Froschboeleli/better-copilot-button#build-from-source">Build from source</a>
+          </div>
+        </div>
+        <article class="card">
+          <h3>After it is running</h3>
+          <ol>
+            <li>Use <strong>Test launch</strong> to confirm the target app.</li>
+            <li>Optionally check <strong>Start at login</strong>.</li>
+            <li>Optionally <strong>Add to Start menu</strong> or run <code>install.ps1</code>.</li>
+            <li>Uninstall from the app, Apps settings, or <code>uninstall.ps1</code>. The Copilot key returns to normal when the app is not running.</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section id="how">
+      <div class="wrap">
+        <h2>How it works</h2>
+        <p class="sub">Microsoft defined the Copilot key as Left Windows + Left Shift + F23. This app listens for that chord and opens your target instead.</p>
+        <div class="grid-3">
+          <article class="card">
+            <h3>1. Listen</h3>
+            <p>A short state machine watches for Win, then Shift, then F23. Real Win and Shift keys are replayed if F23 does not arrive, so Start and Win+Shift shortcuts still work.</p>
+          </article>
+          <article class="card">
+            <h3>2. Launch or focus</h3>
+            <p>If the target is already running, it is brought to the front. File Explorer always opens a new window. Settings uses the <code>ms-settings:</code> protocol.</p>
+          </article>
+          <article class="card">
+            <h3>3. Clean exit</h3>
+            <p>Disable remap or quit and the hook is gone. No leftover kernel remap. That is why uninstall restores Copilot key behavior.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap faq">
+        <h2>FAQ</h2>
+        <details open>
+          <summary>Do I need Administrator?</summary>
+          <p>No. The remap and start-at-login setting are per user. If a future Windows policy blocked hooks, the app would tell you instead of showing a surprise UAC prompt.</p>
+        </details>
+        <details>
+          <summary>Why not use Windows Settings?</summary>
+          <p>Windows 11 can remap the Copilot key to Copilot, Search, or a Store app. It cannot point the key at an arbitrary .exe such as Calculator or a portable tool. That is the gap this app fills.</p>
+        </details>
+        <details>
+          <summary>The Copilot key still opens Copilot</summary>
+          <p>Some laptops handle the key in firmware or a vendor driver, so Windows never sees Win+Shift+F23. Test launch can still work. Another remapper may also own the shortcut. See the README limitations section.</p>
+        </details>
+        <details>
+          <summary>Is this an AI switcher?</summary>
+          <p>No. It remaps one key to any program. The default example is Calculator. Optional presets include everyday Windows apps. One optional ChatGPT path exists only if that desktop app is already installed.</p>
+        </details>
+        <details>
+          <summary>Does it collect data?</summary>
+          <p>No telemetry, ads, or login. Settings are a JSON file in AppData.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap site-footer">
+      <span>Better Copilot Button · MIT License</span>
+      <span>
+        <a href="https://github.com/Froschboeleli/better-copilot-button">Source</a>
+        ·
+        <a href="https://github.com/Froschboeleli/better-copilot-button/blob/main/TESTING.md">Testing</a>
+      </span>
+    </div>
+  </footer>
+</body>
+</html>
