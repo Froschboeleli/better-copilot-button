@@ -66,8 +66,8 @@ public partial class MainWindow : Window
                 Padding = new Thickness(10, 10, 10, 10),
                 Cursor = System.Windows.Input.Cursors.Hand,
                 HorizontalContentAlignment = HorizontalAlignment.Left,
-                Background = Brushes.Transparent,
-                BorderBrush = (Brush)FindResource("LineBrush"),
+                Background = System.Windows.Media.Brushes.Transparent,
+                BorderBrush = (System.Windows.Media.Brush)FindResource("LineBrush"),
                 BorderThickness = new Thickness(1)
             };
             button.Click += OnPresetClick;
@@ -88,7 +88,7 @@ public partial class MainWindow : Window
             {
                 Text = preset.Description,
                 FontSize = 11,
-                Foreground = (Brush)FindResource("MutedBrush"),
+                Foreground = (System.Windows.Media.Brush)FindResource("MutedBrush"),
                 TextWrapping = TextWrapping.Wrap,
                 Margin = new Thickness(0, 2, 0, 0)
             });
@@ -127,11 +127,11 @@ public partial class MainWindow : Window
 
             var selected = id == selectedId;
             button.Background = selected
-                ? (Brush)FindResource("AccentSoftBrush")
-                : Brushes.White;
+                ? (System.Windows.Media.Brush)FindResource("AccentSoftBrush")
+                : System.Windows.Media.Brushes.White;
             button.BorderBrush = selected
-                ? (Brush)FindResource("AccentBrush")
-                : (Brush)FindResource("LineBrush");
+                ? (System.Windows.Media.Brush)FindResource("AccentBrush")
+                : (System.Windows.Media.Brush)FindResource("LineBrush");
         }
     }
 

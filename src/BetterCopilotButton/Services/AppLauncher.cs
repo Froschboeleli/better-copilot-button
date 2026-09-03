@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using System.IO;
 using BetterCopilotButton.Models;
 
 namespace BetterCopilotButton.Services;
