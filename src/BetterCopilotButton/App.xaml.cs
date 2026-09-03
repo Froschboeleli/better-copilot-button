@@ -5,12 +5,13 @@ using BetterCopilotButton.Services;
 
 namespace BetterCopilotButton;
 
-public partial class App : Application
+public partial class App : System.Windows.Application
 {
     private const string MutexName = @"Local\BetterCopilotButton.SingleInstance";
     private const string ShowEventName = @"Local\BetterCopilotButton.ShowSettings";
 
     private Mutex? _mutex;
+    private bool _ownsMutex;
     private EventWaitHandle? _showEvent;
     private Thread? _showListener;
     private TrayIconService? _tray;
@@ -24,11 +25,20 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         _mutex = new Mutex(initiallyOwned: true, MutexName, out var created);
+        _ownsMutex = created;
         _showEvent = new EventWaitHandle(false, EventResetMode.AutoReset, ShowEventName);
 
         if (!created)
         {
-            _showEvent.Set();
+            try
+            {
+                _showEvent.Set();
+            }
+            catch (Exception)
+            {
+                // The first instance may already be exiting.
+            }
+
             Shutdown();
             return;
         }
@@ -185,7 +195,18 @@ public partial class App : Application
         _showEvent?.Set();
         _interceptor?.Dispose();
         _tray?.Dispose();
-        _mutex?.ReleaseMutex();
+        if (_ownsMutex)
+        {
+            try
+            {
+                _mutex?.ReleaseMutex();
+            }
+            catch (ApplicationException)
+            {
+                // Already released.
+            }
+        }
+
         _mutex?.Dispose();
         _showEvent?.Dispose();
         base.OnExit(e);

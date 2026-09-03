@@ -90,7 +90,7 @@ public sealed class TrayIconService : IDisposable
             // Fall through to the packaged icon.
         }
 
-        var streamInfo = Application.GetResourceStream(new Uri("pack://application:,,,/Assets/app.ico"));
+        var streamInfo = System.Windows.Application.GetResourceStream(new Uri("pack://application:,,,/Assets/app.ico"));
         if (streamInfo is not null)
         {
             return new Icon(streamInfo.Stream);

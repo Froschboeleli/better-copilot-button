@@ -28,4 +28,10 @@
     <Resource Include="Assets\app.ico" />
     <Resource Include="Assets\app.png" />
   </ItemGroup>
+
+  <!-- UseWPF + UseWindowsForms both inject global usings. Application and
+       MessageBox then collide. Keep WinForms explicit via aliases. -->
+  <ItemGroup>
+    <Using Remove="System.Windows.Forms" />
+  </ItemGroup>
 </Project>
